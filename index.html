@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chandravanka Bhargav Abhilash — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg0:#020408;--bg1:#040810;--bg2:#060d1a;
+  --sap:#0ea5e9;--sap-lo:rgba(14,165,233,.11);--sap-gl:rgba(14,165,233,.35);
+  --amb:#f59e0b;--vio:#8b5cf6;
+  --wh:#f8fafc;--sl:#cbd5e1;--mt:#64748b;
+  --card:rgba(248,250,252,.028);--bdr:rgba(248,250,252,.06);--bdr-g:rgba(14,165,233,.3);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg0);color:var(--wh);font-family:'Raleway',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+#dot{position:fixed;width:6px;height:6px;background:var(--sap);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 10px var(--sap);}
+#ring{position:fixed;width:28px;height:28px;border:1px solid rgba(14,165,233,.55);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
+
+/* AURORA */
+.aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.aurora::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 55% at 15% 15%,rgba(14,165,233,.14) 0%,transparent 55%),
+    radial-gradient(ellipse 55% 45% at 85% 10%,rgba(139,92,246,.12) 0%,transparent 50%),
+    radial-gradient(ellipse 65% 50% at 75% 85%,rgba(14,165,233,.1) 0%,transparent 55%),
+    radial-gradient(ellipse 45% 40% at 10% 80%,rgba(245,158,11,.08) 0%,transparent 50%),
+    linear-gradient(160deg,#020408 0%,#040810 50%,#060d1a 100%);
+  animation:aShift 18s ease-in-out infinite alternate;}
+@keyframes aShift{0%{filter:hue-rotate(0deg) brightness(1);}50%{filter:hue-rotate(12deg) brightness(1.04);}100%{filter:hue-rotate(-8deg) brightness(.97);}}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;animation:oDrift ease-in-out infinite alternate;}
+.o1{width:550px;height:550px;background:rgba(14,165,233,.13);top:-150px;left:-120px;animation-duration:20s;}
+.o2{width:400px;height:400px;background:rgba(139,92,246,.11);top:35%;right:-100px;animation-duration:16s;animation-delay:-6s;}
+.o3{width:480px;height:480px;background:rgba(14,165,233,.09);bottom:-130px;left:25%;animation-duration:22s;animation-delay:-11s;}
+.o4{width:300px;height:300px;background:rgba(245,158,11,.07);bottom:15%;right:10%;animation-duration:14s;animation-delay:-4s;}
+@keyframes oDrift{from{transform:translate(0,0) scale(1);}to{transform:translate(40px,-50px) scale(1.08);}}
+.dotgrid{position:absolute;inset:0;background-image:radial-gradient(rgba(14,165,233,.18) 1px,transparent 1px);background-size:44px 44px;opacity:.32;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 5vw;background:rgba(2,4,8,.78);backdrop-filter:blur(28px);border-bottom:1px solid var(--bdr);}
+.nav-logo{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;letter-spacing:.14em;background:linear-gradient(135deg,var(--sap),var(--vio));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mt);text-decoration:none;transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;background:linear-gradient(90deg,var(--sap),var(--vio));transition:width .35s ease;}
+.nav-links a:hover{color:var(--wh);}
+.nav-links a:hover::after{width:100%;}
+
+.pg{position:relative;z-index:2;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:10rem 5vw 6rem;position:relative;}
+.avail{display:inline-flex;align-items:center;gap:.6rem;padding:.35rem 1.1rem;border:1px solid rgba(14,165,233,.25);background:rgba(14,165,233,.06);border-radius:999px;margin-bottom:2.4rem;animation:fUp .8s ease both;width:fit-content;}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:var(--sap);box-shadow:0 0 10px var(--sap);animation:blink 2s ease-in-out infinite;}
+.avail-text{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sap);}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.7);}}
+h1.hero-name{font-family:'Cinzel Decorative',serif;font-size:clamp(2.2rem,6.5vw,6rem);font-weight:900;line-height:1.1;letter-spacing:.04em;margin-bottom:1rem;animation:fUp .8s .1s ease both;}
+.n1{display:block;background:linear-gradient(135deg,var(--wh) 30%,var(--sl) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.n2{display:block;background:linear-gradient(135deg,var(--sap) 0%,var(--vio) 60%,var(--amb) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-family:'Cinzel',serif;font-size:.85rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--mt);margin-bottom:1.8rem;animation:fUp .8s .2s ease both;}
+.hero-bio{font-size:1.05rem;font-weight:300;color:var(--sl);line-height:1.95;max-width:580px;margin-bottom:3rem;animation:fUp .8s .3s ease both;}
+.hero-bio strong{color:var(--wh);font-weight:500;}
+.hero-btns{display:flex;gap:1.2rem;flex-wrap:wrap;animation:fUp .8s .4s ease both;}
+.hero-stats{display:flex;gap:0;margin-top:5rem;border:1px solid var(--bdr);max-width:700px;animation:fUp .8s .6s ease both;}
+.hstat{flex:1;padding:1.4rem 1.6rem;border-right:1px solid var(--bdr);position:relative;overflow:hidden;transition:background .3s;}
+.hstat:last-child{border-right:none;}
+.hstat:hover{background:rgba(14,165,233,.05);}
+.hstat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--sap),var(--vio));transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
+.hstat:hover::before{transform:scaleX(1);}
+.hstat-val{font-family:'Cinzel',serif;font-size:1.5rem;font-weight:700;color:var(--sap);display:block;margin-bottom:.2rem;}
+.hstat-key{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mt);}
+.scroller{position:absolute;bottom:3rem;left:5vw;display:flex;align-items:center;gap:.8rem;animation:fUp 1s .9s ease both;}
+.scroll-text{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mt);}
+.scroll-bar{width:50px;height:1px;background:linear-gradient(90deg,var(--sap),transparent);animation:sPulse 2s ease-in-out infinite;}
+@keyframes sPulse{0%,100%{opacity:.35;}50%{opacity:1;}}
+
+.div{height:1px;margin:0 5vw;background:linear-gradient(90deg,var(--sap),rgba(139,92,246,.5),transparent 70%);opacity:.2;}
+section{padding:7rem 5vw;position:relative;}
+.s-tag{display:inline-flex;align-items:center;gap:.7rem;margin-bottom:.6rem;}
+.s-line{width:24px;height:1px;background:var(--sap);}
+.s-label{font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--sap);}
+.s-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:700;letter-spacing:.04em;color:var(--wh);margin-bottom:3.5rem;line-height:1.15;}
+.s-title em{font-style:normal;background:linear-gradient(135deg,var(--sap),var(--vio));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* ABOUT */
+#about{background:var(--bg1);}
+.about-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:5rem;align-items:start;}
+.about-text p{font-size:.98rem;font-weight:300;color:var(--sl);line-height:2.05;margin-bottom:1.2rem;}
+.about-text strong{color:var(--wh);font-weight:600;}
+.callout{margin-top:2rem;padding:1.5rem 1.8rem;border-left:2px solid var(--sap);background:var(--sap-lo);border-radius:0 4px 4px 0;}
+.callout p{font-family:'Cinzel',serif;font-size:.88rem;font-weight:400;letter-spacing:.06em;color:var(--sl);line-height:1.8;margin:0;}
+.callout strong{color:var(--sap);}
+.metrics{display:flex;flex-direction:column;gap:1rem;}
+.metric{border:1px solid var(--bdr);background:var(--card);padding:1.8rem 2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;}
+.metric::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--sap),var(--vio));transform:scaleY(0);transform-origin:top;transition:transform .4s ease;}
+.metric:hover{border-color:var(--bdr-g);transform:translateX(5px);}
+.metric:hover::after{transform:scaleY(1);}
+.m-num{font-family:'Cinzel Decorative',serif;font-size:2.8rem;font-weight:700;line-height:1;color:var(--sap);margin-bottom:.3rem;}
+.m-txt{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mt);}
+
+/* SKILLS */
+#skills{background:var(--bg0);}
+.skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);}
+.sk{background:var(--bg0);padding:2.4rem 2rem;position:relative;overflow:hidden;transition:background .35s;}
+.sk::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0;background:linear-gradient(0deg,var(--sap-lo),transparent);transition:height .4s ease;}
+.sk:hover{background:var(--bg2);}
+.sk:hover::after{height:100%;}
+.sk-hd{display:flex;align-items:center;gap:.9rem;margin-bottom:.8rem;position:relative;}
+.sk-ico{font-size:1.6rem;}
+.sk-nm{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--wh);}
+.sk-dsc{font-size:.86rem;font-weight:300;color:var(--mt);line-height:1.7;margin-bottom:1.1rem;position:relative;}
+.sk-track{height:2px;background:rgba(248,250,252,.06);position:relative;}
+.sk-prog{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--sap),var(--vio));}
+
+/* PROJECTS */
+#projects{background:var(--bg1);}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.pc{border:1px solid var(--bdr);background:var(--card);padding:2.5rem;position:relative;overflow:hidden;transition:transform .35s,border-color .35s,box-shadow .35s;display:flex;flex-direction:column;gap:.9rem;}
+.pc::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,var(--sap-lo),transparent 65%);opacity:0;transition:opacity .4s;}
+.pc:hover{transform:translateY(-6px);border-color:var(--bdr-g);box-shadow:0 24px 60px rgba(14,165,233,.12);}
+.pc:hover::before{opacity:1;}
+.pc-num{font-family:'Cinzel Decorative',serif;font-size:3.2rem;font-weight:700;color:rgba(14,165,233,.12);line-height:1;transition:color .3s;}
+.pc:hover .pc-num{color:rgba(14,165,233,.25);}
+.pc-name{font-family:'Cinzel',serif;font-size:1.25rem;font-weight:700;letter-spacing:.06em;color:var(--wh);line-height:1.25;position:relative;}
+.pc-desc{font-size:.9rem;font-weight:300;color:var(--sl);line-height:1.85;flex:1;position:relative;}
+.pc-tags{display:flex;flex-wrap:wrap;gap:.45rem;position:relative;}
+.pt{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.25rem .85rem;border:1px solid rgba(14,165,233,.22);color:var(--sap);background:rgba(14,165,233,.06);}
+.pc-arr{position:absolute;top:2rem;right:2rem;font-size:1rem;color:var(--mt);transition:color .25s,transform .25s;}
+.pc:hover .pc-arr{color:var(--sap);transform:translate(3px,-3px);}
+
+/* EDUCATION */
+#education{background:var(--bg2);}
+.edu-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;}
+.edu-motto{font-family:'Cinzel',serif;font-size:.92rem;font-style:italic;letter-spacing:.06em;color:var(--mt);line-height:1.8;padding-left:1.2rem;border-left:2px solid var(--sap);margin-top:2rem;}
+.edu-card{border:1px solid var(--bdr);background:var(--card);padding:3rem;position:relative;overflow:hidden;}
+.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sap),var(--vio),var(--amb));background-size:200% 100%;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+.edu-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.28rem .9rem;border:1px solid rgba(245,158,11,.3);background:rgba(245,158,11,.07);color:var(--amb);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.5rem;}
+.edu-deg{font-family:'Cinzel',serif;font-size:1.55rem;font-weight:700;letter-spacing:.05em;color:var(--wh);line-height:1.25;margin-bottom:.6rem;}
+.edu-inst{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--sap);margin-bottom:.25rem;}
+.edu-loc{font-size:.88rem;color:var(--mt);margin-bottom:1.8rem;}
+.edu-body{font-size:.93rem;font-weight:300;color:var(--sl);line-height:1.95;}
+.edu-mods{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:2rem;}
+.em2{padding:.5rem .9rem;border:1px solid var(--bdr);font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mt);display:flex;align-items:center;gap:.5rem;}
+.em2::before{content:'›';color:var(--sap);font-size:.9rem;}
+
+/* ═══════════════════════════════════════
+   CONTACT SECTION
+═══════════════════════════════════════ */
+#contact{background:var(--bg1);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+.contact-intro{font-size:1rem;font-weight:300;color:var(--sl);line-height:2;margin-bottom:2.5rem;}
+.clinks{display:flex;flex-direction:column;gap:.8rem;}
+.cl{display:flex;align-items:center;gap:1.2rem;padding:1.1rem 1.5rem;border:1px solid var(--bdr);background:var(--card);text-decoration:none;color:var(--wh);font-size:.85rem;font-weight:400;transition:transform .25s,border-color .25s,background .25s,color .25s;position:relative;overflow:hidden;}
+.cl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:rgba(14,165,233,.07);transition:width .3s ease;}
+.cl:hover{transform:translateX(6px);border-color:var(--bdr-g);color:var(--sap);}
+.cl:hover::before{width:100%;}
+.cl-ico{font-size:1.2rem;flex-shrink:0;position:relative;}
+.cl-grp{position:relative;}
+.cl-lbl{font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sap);display:block;margin-bottom:.1rem;}
+
+/* ── FORM WRAPPER ── */
+.form-box{position:relative;}
+
+/* ── INPUT FIELDS ── */
+.cf{display:flex;flex-direction:column;gap:1.1rem;}
+.cf-row{display:flex;flex-direction:column;gap:.4rem;position:relative;}
+.cf-lbl{font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sap);}
+
+.cf input,.cf textarea{
+  background:rgba(248,250,252,.03);
+  border:1px solid var(--bdr);
+  padding:.9rem 1.1rem;
+  color:var(--wh);
+  font-family:'Raleway',sans-serif;
+  font-size:.9rem;font-weight:300;
+  outline:none;
+  border-radius:1px;
+  transition:border-color .3s, background .3s, box-shadow .3s;
+  width:100%;
+}
+.cf input:focus,.cf textarea:focus{
+  border-color:var(--sap);
+  background:rgba(14,165,233,.04);
+  box-shadow:0 0 0 3px rgba(14,165,233,.08);
+}
+.cf textarea{resize:vertical;min-height:130px;}
+.cf input::placeholder,.cf textarea::placeholder{color:rgba(100,116,139,.45);}
+
+/* field hint (replaces red error) */
+.cf-hint{
+  font-size:.6rem;font-weight:500;
+  letter-spacing:.1em;
+  color:rgba(245,158,11,.85);
+  margin-top:.3rem;
+  min-height:.9rem;
+  display:block;
+  transition:opacity .25s;
+  opacity:0;
+}
+.cf-row.show-hint .cf-hint{opacity:1;}
+.cf-row.show-hint input,
+.cf-row.show-hint textarea{
+  border-color:rgba(245,158,11,.5);
+  box-shadow:0 0 0 3px rgba(245,158,11,.06);
+}
+/* success field state */
+.cf-row.valid input,
+.cf-row.valid textarea{
+  border-color:rgba(14,165,233,.4);
+}
+
+/* ── SEND BUTTON ── */
+.send-btn{
+  display:flex;align-items:center;justify-content:center;gap:.7rem;
+  width:100%;padding:1rem 2rem;
+  font-family:'Cinzel',serif;
+  font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;cursor:pointer;border:none;outline:none;
+  background:linear-gradient(135deg,var(--sap),var(--vio));
+  box-shadow:0 0 24px rgba(14,165,233,.2);
+  transition:box-shadow .3s,transform .3s,filter .3s,opacity .3s;
+  position:relative;overflow:hidden;
+  border-radius:1px;
+}
+.send-btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--vio),var(--sap));
+  opacity:0;transition:opacity .35s;
+}
+.send-btn:hover:not(:disabled){
+  box-shadow:0 0 40px rgba(14,165,233,.4);
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+}
+.send-btn:hover::before{opacity:1;}
+.send-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none;}
+.send-btn span{position:relative;z-index:1;display:flex;align-items:center;gap:.6rem;}
+
+/* spinner */
+.spinner{
+  width:14px;height:14px;
+  border:2px solid rgba(255,255,255,.3);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  display:none;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ── SUCCESS STATE (replaces form after send) ── */
+.form-success{
+  display:none;
+  flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:3rem 2rem;
+  border:1px solid rgba(14,165,233,.25);
+  background:rgba(14,165,233,.05);
+  border-radius:2px;
+  gap:1.2rem;
+  min-height:340px;
+}
+.success-icon{font-size:3rem;animation:popIn .5s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes popIn{from{opacity:0;transform:scale(.4);}to{opacity:1;transform:scale(1);}}
+.success-title{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:700;letter-spacing:.08em;color:var(--wh);}
+.success-msg{font-size:.9rem;font-weight:300;color:var(--sl);line-height:1.8;max-width:300px;}
+.success-note{font-size:.65rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sap);}
+.send-another{
+  margin-top:.5rem;
+  background:none;border:1px solid var(--bdr);
+  color:var(--mt);font-family:'Raleway',sans-serif;
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;padding:.5rem 1.2rem;
+  cursor:pointer;transition:color .2s,border-color .2s;
+}
+.send-another:hover{color:var(--sap);border-color:var(--sap);}
+
+/* ── FOOTER ── */
+footer{background:var(--bg0);border-top:1px solid var(--bdr);padding:2.2rem 5vw;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;}
+.ft-brand{font-family:'Cinzel Decorative',serif;font-size:.9rem;font-weight:700;letter-spacing:.08em;background:linear-gradient(135deg,var(--sap),var(--vio));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ft-copy{font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mt);}
+
+/* BUTTONS (hero) */
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2.2rem;font-family:'Cinzel',serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .25s ease;border:none;outline:none;}
+.btn-sap{background:linear-gradient(135deg,var(--sap),var(--vio));color:#fff;box-shadow:0 0 0 0 var(--sap-gl);}
+.btn-sap:hover{box-shadow:0 0 32px var(--sap-gl);transform:translateY(-3px);filter:brightness(1.1);}
+.btn-ghost{border:1px solid rgba(248,250,252,.15);color:var(--sl);background:transparent;}
+.btn-ghost:hover{border-color:var(--sap);color:var(--sap);transform:translateY(-3px);background:var(--sap-lo);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+@keyframes fUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:900px){
+  .about-grid,.edu-layout,.contact-grid{grid-template-columns:1fr;gap:3rem;}
+  .skills-wrap{grid-template-columns:1fr 1fr;}
+  .proj-grid{grid-template-columns:1fr;}
+  .hero-stats{flex-wrap:wrap;}
+  .hstat{min-width:48%;}
+}
+@media(max-width:600px){
+  .skills-wrap,.edu-mods{grid-template-columns:1fr;}
+  .nav-links{gap:1.2rem;}
+  section{padding:5rem 4vw;}
+  footer{flex-direction:column;gap:1rem;text-align:center;}
+  #dot,#ring{display:none;}body{cursor:auto;}
+}
+</style>
+</head>
+<body>
+
+<div id="dot"></div>
+<div id="ring"></div>
+
+<div class="aurora">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="orb o3"></div><div class="orb o4"></div>
+  <div class="dotgrid"></div>
+</div>
+
+<nav>
+  <a href="#" class="nav-logo">CBA.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="pg">
+
+<!-- HERO -->
+<section id="hero">
+  <div class="avail"><span class="avail-dot"></span><span class="avail-text">Available for Internships &amp; Collaboration</span></div>
+  <h1 class="hero-name"><span class="n1">Chandravanka</span><span class="n2">Bhargav Abhilash</span></h1>
+  <p class="hero-sub">Computer Science &amp; Engineering &nbsp;·&nbsp; Visakhapatnam</p>
+  <p class="hero-bio">A dedicated CSE undergraduate at <strong>Vignan's Institute of Information Technology</strong>, passionate about engineering software solutions that are purposeful, performant, and elegant. I build with intention — and learn without limits.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-sap">View My Work</a>
+    <a href="#contact" class="btn btn-ghost">Let's Connect</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><span class="hstat-val">CSE</span><span class="hstat-key">B.Tech Degree</span></div>
+    <div class="hstat"><span class="hstat-val">VIIT</span><span class="hstat-key">Vignan's Inst. of IT</span></div>
+    <div class="hstat"><span class="hstat-val">5+</span><span class="hstat-key">Projects Built</span></div>
+    <div class="hstat"><span class="hstat-val">2028</span><span class="hstat-key">Expected Grad.</span></div>
+  </div>
+  <div class="scroller"><span class="scroll-text">Scroll</span><span class="scroll-bar"></span></div>
+</section>
+<div class="div"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="s-tag reveal"><span class="s-line"></span><span class="s-label">About Me</span></div>
+  <div class="s-title reveal">Engineered to Build.<br/>Driven to <em>Innovate</em>.</div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm <strong>Chandravanka Bhargav Abhilash</strong>, a B.Tech student in <strong>Computer Science &amp; Engineering</strong> at <strong>Vignan's Institute of Information Technology</strong>, Visakhapatnam, Andhra Pradesh.</p>
+      <p>Software engineering is not just my field — it's my craft. I approach every project with a product mindset: understanding the problem deeply, then executing with precision, clean architecture, and genuine care for the end user.</p>
+      <p>My core focus is <strong>full-stack web development</strong>, with growing expertise in backend systems, database design, and developer tooling. I sharpen my skills through competitive programming, hackathons, and real-world builds.</p>
+      <div class="callout"><p><strong>Currently focused on:</strong> Building impactful real-world projects, deepening expertise in React and Python, and preparing for a high-impact career in software engineering.</p></div>
+    </div>
+    <div class="metrics reveal">
+      <div class="metric"><div class="m-num">CSE</div><div class="m-txt">B.Tech Specialisation</div></div>
+      <div class="metric"><div class="m-num">5+</div><div class="m-txt">Projects Completed</div></div>
+      <div class="metric"><div class="m-num">2028</div><div class="m-txt">Expected Graduation</div></div>
+      <div class="metric"><div class="m-num">∞</div><div class="m-txt">Curiosity &amp; Drive</div></div>
+    </div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="s-tag reveal"><span class="s-line"></span><span class="s-label">Skills</span></div>
+  <div class="s-title reveal">Tools of My <em>Craft</em></div>
+  <div class="skills-wrap reveal">
+    <div class="sk"><div class="sk-hd"><span class="sk-ico">💻</span><span class="sk-nm">C / C++</span></div><div class="sk-dsc">Data structures, algorithms, competitive programming and systems thinking.</div><div class="sk-track"><div class="sk-prog" style="width:80%"></div></div></div>
+    <div class="sk"><div class="sk-hd"><span class="sk-ico">🐍</span><span class="sk-nm">Python</span></div><div class="sk-dsc">Scripting, automation, data analysis and introductory machine learning.</div><div class="sk-track"><div class="sk-prog" style="width:75%"></div></div></div>
+    <div class="sk"><div class="sk-hd"><span class="sk-ico">🌐</span><span class="sk-nm">HTML / CSS / JS</span></div><div class="sk-dsc">Responsive, accessible, pixel-perfect web interfaces from scratch.</div><div class="sk-track"><div class="sk-prog" style="width:88%"></div></div></div>
+    <div class="sk"><div class="sk-hd"><span class="sk-ico">⚛️</span><span class="sk-nm">React.js</span></div><div class="sk-dsc">Component architecture, hooks, state management and SPA development.</div><div class="sk-track"><div class="sk-prog" style="width:65%"></div></div></div>
+    <div class="sk"><div class="sk-hd"><span class="sk-ico">🗄️</span><span class="sk-nm">SQL &amp; Databases</span></div><div class="sk-dsc">Relational schema design, complex queries and database management.</div><div class="sk-track"><div class="sk-prog" style="width:70%"></div></div></div>
+    <div class="sk"><div class="sk-hd"><span class="sk-ico">🐙</span><span class="sk-nm">Git &amp; GitHub</span></div><div class="sk-dsc">Version control, branching workflows, collaboration and open source.</div><div class="sk-track"><div class="sk-prog" style="width:80%"></div></div></div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="s-tag reveal"><span class="s-line"></span><span class="s-label">Projects</span></div>
+  <div class="s-title reveal">Selected <em>Works</em></div>
+  <div class="proj-grid">
+    <div class="pc reveal"><span class="pc-arr">↗</span><div class="pc-num">01</div><div class="pc-name">E-Commerce Website</div><div class="pc-desc">A fully functional online storefront with product listings, dynamic cart management, and a streamlined checkout flow.</div><div class="pc-tags"><span class="pt">HTML</span><span class="pt">CSS</span><span class="pt">JavaScript</span></div></div>
+    <div class="pc reveal"><span class="pc-arr">↗</span><div class="pc-num">02</div><div class="pc-name">Task Management App</div><div class="pc-desc">A productivity application enabling task creation, categorisation, priority filtering and persistent local storage.</div><div class="pc-tags"><span class="pt">React</span><span class="pt">LocalStorage</span><span class="pt">CSS</span></div></div>
+    <div class="pc reveal"><span class="pc-arr">↗</span><div class="pc-num">03</div><div class="pc-name">Student Result Portal</div><div class="pc-desc">Dual-interface portal for students to view results with a secure admin panel for data entry and management.</div><div class="pc-tags"><span class="pt">Python</span><span class="pt">SQL</span><span class="pt">HTML/CSS</span></div></div>
+    <div class="pc reveal"><span class="pc-arr">↗</span><div class="pc-num">04</div><div class="pc-name">Login &amp; Auth System</div><div class="pc-desc">Complete authentication with user registration, hashed passwords, session handling and protected routes.</div><div class="pc-tags"><span class="pt">Python</span><span class="pt">Flask</span><span class="pt">SQL</span></div></div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="edu-layout">
+    <div class="edu-aside reveal">
+      <div class="s-tag"><span class="s-line"></span><span class="s-label">Education</span></div>
+      <div class="s-title">Academic<br/><em>Foundation</em></div>
+      <div class="edu-motto">"The beautiful thing about learning is that nobody can take it away from you."</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-pill">🎓 Current Enrollment</div>
+      <div class="edu-deg">Bachelor of Technology<br/>Computer Science &amp; Engineering</div>
+      <div class="edu-inst">Vignan's Institute of Information Technology</div>
+      <div class="edu-loc">Visakhapatnam, Andhra Pradesh &nbsp;·&nbsp; 2024 – 2028 (Expected)</div>
+      <div class="edu-body">Pursuing a rigorous curriculum encompassing software engineering principles, data structures &amp; algorithms, database management systems, operating systems, computer networks and modern web technologies. Actively engaged in technical clubs, coding competitions, hackathons and collaborative development projects.</div>
+      <div class="edu-mods">
+        <div class="em2">Data Structures</div><div class="em2">Algorithms</div>
+        <div class="em2">DBMS</div><div class="em2">Operating Systems</div>
+        <div class="em2">Web Technologies</div><div class="em2">Computer Networks</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="s-tag reveal"><span class="s-line"></span><span class="s-label">Contact</span></div>
+  <div class="s-title reveal">Let's <em>Connect</em></div>
+  <div class="contact-grid">
+
+    <!-- Left: links -->
+    <div class="reveal">
+      <p class="contact-intro">I'm actively seeking internship opportunities and open to collaborating on meaningful software projects. Whether it's a role, a project idea, or a conversation about tech — I'd love to hear from you.</p>
+      <div class="clinks">
+        <a href="mailto:chandravankabhargavhilash69@gmail.com" class="cl"><span class="cl-ico">📧</span><span class="cl-grp"><span class="cl-lbl">Email</span>chandravankabhargavhilash69@gmail.com</span></a>
+        <a href="https://www.linkedin.com/in/chandravanka-bhargav-abhilash-29620637b" target="_blank" class="cl"><span class="cl-ico">💼</span><span class="cl-grp"><span class="cl-lbl">LinkedIn</span>chandravanka-bhargav-abhilash</span></a>
+        <a href="https://github.com/chandravankabhargavabhilash69" target="_blank" class="cl"><span class="cl-ico">🐙</span><span class="cl-grp"><span class="cl-lbl">GitHub</span>chandravankabhargavabhilash69</span></a>
+        <a href="tel:+917672089612" class="cl"><span class="cl-ico">📱</span><span class="cl-grp"><span class="cl-lbl">Phone</span>+91 76720 89612</span></a>
+      </div>
+    </div>
+
+    <!-- Right: W3Forms contact form -->
+    <div class="form-box reveal">
+
+      <!-- FORM (shown by default) -->
+      <div id="formArea">
+        <!--
+          ╔══════════════════════════════════════════════╗
+          ║  W3FORMS SETUP — DO THIS ONCE                ║
+          ║  1. Go to https://w3forms.com                ║
+          ║  2. Enter: chandravankabhargavhilash69        ║
+          ║             @gmail.com                       ║
+          ║  3. Confirm email in your Gmail inbox        ║
+          ║  4. Copy your Access Key                     ║
+          ║  5. Paste it below replacing                 ║
+          ║     YOUR-ACCESS-KEY-HERE                     ║
+          ╚══════════════════════════════════════════════╝
+        -->
+        <input type="hidden" id="w3key" value="YOUR-ACCESS-KEY-HERE"/>
+
+        <div class="cf">
+          <div class="cf-row" id="row-name">
+            <label class="cf-lbl" for="cf-name">Your Name</label>
+            <input id="cf-name" type="text" placeholder="John Doe" autocomplete="name"/>
+            <span class="cf-hint">Please enter your name</span>
+          </div>
+          <div class="cf-row" id="row-email">
+            <label class="cf-lbl" for="cf-email">Your Email</label>
+            <input id="cf-email" type="email" placeholder="john@example.com" autocomplete="email"/>
+            <span class="cf-hint">Please enter a valid email address</span>
+          </div>
+          <div class="cf-row" id="row-msg">
+            <label class="cf-lbl" for="cf-msg">Message</label>
+            <textarea id="cf-msg" placeholder="Tell me about the opportunity or project..."></textarea>
+            <span class="cf-hint">Please write at least 10 characters</span>
+          </div>
+          <button type="button" class="send-btn" id="sendBtn">
+            <span id="btnIdle">Send Message &nbsp;→</span>
+            <span id="btnBusy" style="display:none;align-items:center;gap:.6rem;">
+              <span class="spinner" id="spin" style="display:inline-block;"></span>Sending…
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SUCCESS STATE (shown after send) -->
+      <div class="form-success" id="successArea">
+        <div class="success-icon">✉️</div>
+        <div class="success-title">Message Sent!</div>
+        <div class="success-msg">Thank you for reaching out. I'll get back to you within 24–48 hours.</div>
+        <div class="success-note">📬 Check your inbox for a confirmation</div>
+        <button class="send-another" id="sendAnother">Send Another Message</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="ft-brand">Chandravanka Bhargav Abhilash</span>
+  <span class="ft-copy">CSE @ VIIT Visakhapatnam &nbsp;·&nbsp; 2024</span>
+</footer>
+
+</div><!-- /pg -->
+
+<script>
+/* ── Cursor ── */
+const dot=document.getElementById('dot'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  dot.style.left=mx+'px';dot.style.top=my+'px';
+});
+(function loop(){
+  rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(loop);
+})();
+
+/* ── Scroll Reveal ── */
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ════════════════════════════════════════════════════
+   W3FORMS — CONTACT FORM
+   Smooth UX: gentle hints, no harsh errors,
+   clean success screen, auto-retry on network fail.
+════════════════════════════════════════════════════ */
+const nameEl    = document.getElementById('cf-name');
+const emailEl   = document.getElementById('cf-email');
+const msgEl     = document.getElementById('cf-msg');
+const sendBtn   = document.getElementById('sendBtn');
+const btnIdle   = document.getElementById('btnIdle');
+const btnBusy   = document.getElementById('btnBusy');
+const formArea  = document.getElementById('formArea');
+const successArea = document.getElementById('successArea');
+const sendAnother = document.getElementById('sendAnother');
+
+/* helpers */
+function rowOf(el){ return el.closest('.cf-row'); }
+
+function setHint(el, show){
+  const row = rowOf(el);
+  if(show){ row.classList.add('show-hint'); row.classList.remove('valid'); }
+  else     { row.classList.remove('show-hint'); }
+}
+
+function setValid(el){
+  const row = rowOf(el);
+  row.classList.remove('show-hint');
+  row.classList.add('valid');
+}
+
+function clearStates(){
+  [nameEl, emailEl, msgEl].forEach(f=>{
+    rowOf(f).classList.remove('show-hint','valid');
+  });
+}
+
+/* live gentle validation — only shows hint after user leaves field */
+nameEl.addEventListener('blur',()=>{
+  if(nameEl.value.trim().length >= 2) setValid(nameEl);
+  else if(nameEl.value.trim().length > 0) setHint(nameEl, true);
+});
+emailEl.addEventListener('blur',()=>{
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim());
+  if(ok) setValid(emailEl);
+  else if(emailEl.value.trim().length > 0) setHint(emailEl, true);
+});
+msgEl.addEventListener('blur',()=>{
+  if(msgEl.value.trim().length >= 10) setValid(msgEl);
+  else if(msgEl.value.trim().length > 0) setHint(msgEl, true);
+});
+
+/* remove hint as soon as user starts fixing */
+[nameEl, emailEl, msgEl].forEach(f=>{
+  f.addEventListener('input',()=>{
+    rowOf(f).classList.remove('show-hint');
+  });
+});
+
+/* validate before submit */
+function validate(){
+  let ok = true;
+  if(nameEl.value.trim().length < 2)                              { setHint(nameEl,true);  ok=false; }
+  else setValid(nameEl);
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim()))   { setHint(emailEl,true); ok=false; }
+  else setValid(emailEl);
+  if(msgEl.value.trim().length < 10)                              { setHint(msgEl,true);   ok=false; }
+  else setValid(msgEl);
+  return ok;
+}
+
+function setLoading(on){
+  sendBtn.disabled      = on;
+  btnIdle.style.display = on ? 'none'  : 'flex';
+  btnBusy.style.display = on ? 'flex'  : 'none';
+}
+
+/* show success screen */
+function showSuccess(){
+  formArea.style.display    = 'none';
+  successArea.style.display = 'flex';
+}
+
+/* reset back to form */
+sendAnother.addEventListener('click',()=>{
+  formArea.style.display    = 'block';
+  successArea.style.display = 'none';
+  nameEl.value=''; emailEl.value=''; msgEl.value='';
+  clearStates();
+});
+
+/* ── SUBMIT ── */
+sendBtn.addEventListener('click', async ()=>{
+  if(!validate()) return;   /* gentle hints shown, no crash */
+
+  setLoading(true);
+
+  const key     = document.getElementById('w3key').value;
+  const payload = {
+    access_key : key,
+    subject    : 'New Portfolio Message — ' + nameEl.value.trim(),
+    from_name  : nameEl.value.trim(),
+    name       : nameEl.value.trim(),
+    email      : emailEl.value.trim(),
+    message    : msgEl.value.trim(),
+    botcheck   : ''          /* honeypot — always empty = human */
+  };
+
+  /* retry up to 2 times on network failure */
+  let attempts = 0;
+  let success  = false;
+
+  while(attempts < 2 && !success){
+    attempts++;
+    try{
+      const res  = await fetch('https://api.w3forms.com/submit',{
+        method : 'POST',
+        headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
+        body   : JSON.stringify(payload)
+      });
+      const json = await res.json();
+      if(json.success){ success = true; }
+    } catch(e){
+      if(attempts >= 2){
+        /* silently fallback — tell user to email directly, no scary error */
+        setLoading(false);
+        msgEl.value = '(Network issue — please email me directly at chandravankabhargavhilash69@gmail.com)';
+        rowOf(msgEl).classList.remove('show-hint','valid');
+        return;
+      }
+      await new Promise(r=>setTimeout(r, 1200)); /* wait 1.2s before retry */
+    }
+  }
+
+  setLoading(false);
+
+  if(success){
+    showSuccess();
+  } else {
+    /* W3Forms returned an error (e.g. invalid key) — gentle message */
+    rowOf(nameEl).classList.remove('show-hint','valid');
+    msgEl.value = '';
+    document.getElementById('row-msg').querySelector('.cf-hint').textContent =
+      'Could not send — please email me directly at chandravankabhargavhilash69@gmail.com';
+    setHint(msgEl, true);
+  }
+});
+</script>
+</body>
+</html>
